@@ -16,62 +16,67 @@
         tools:layout_editor_absoluteY="1dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/tom3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:foregroundGravity="fill"
             android:onClick="buttonTapped"
             app:layout_column="0"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_row="0"
-            app:layout_rowWeight="1"
-            app:srcCompat="@drawable/tom1" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
-            app:layout_column="1"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="0"
-            app:layout_rowWeight="1"
-            app:srcCompat="@drawable/tom2" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
-            app:layout_column="0"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="1"
             app:layout_rowWeight="1"
             app:srcCompat="@drawable/tom3" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/crash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:foregroundGravity="fill"
             android:onClick="buttonTapped"
             app:layout_column="1"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
-            app:layout_row="1"
+            app:layout_row="0"
             app:layout_rowWeight="1"
             app:srcCompat="@drawable/crash" />
 
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/snare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:foregroundGravity="fill"
+            android:onClick="buttonTapped"
+            app:layout_column="0"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_row="1"
+            app:layout_rowWeight="1"
+            app:srcCompat="@drawable/snare" />
+
+        <ImageView
+            android:id="@+id/kick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:foregroundGravity="fill"
+            android:onClick="buttonTapped"
+            app:layout_column="1"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill"
+            app:layout_row="1"
+            app:layout_rowWeight="1"
+            app:srcCompat="@drawable/kick" />
+
+        <ImageView
+            android:id="@+id/tom1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:foregroundGravity="fill"
             android:onClick="buttonTapped"
             app:layout_column="0"
@@ -79,10 +84,10 @@
             app:layout_gravity="fill"
             app:layout_row="2"
             app:layout_rowWeight="1"
-            app:srcCompat="@drawable/snare" />
+            app:srcCompat="@drawable/tom1" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/tom2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:foregroundGravity="fill"
@@ -92,10 +97,7 @@
             app:layout_gravity="fill"
             app:layout_row="2"
             app:layout_rowWeight="1"
-            app:srcCompat="@drawable/kick" />
-
-
-
+            app:srcCompat="@drawable/tom2" />
 
     </android.support.v7.widget.GridLayout>
 </android.support.constraint.ConstraintLayout>
