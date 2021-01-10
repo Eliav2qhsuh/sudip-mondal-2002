@@ -13,10 +13,10 @@ public class MainActivity extends AppCompatActivity {
         int id = view.getId();
         String ourId = view.getResources().getResourceEntryName(id);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.tom1);
-        mediaPlayer.start();
+        int resourceId = getResources().getIdentifier(ourId,"raw","com.sudip.drumkitapp");
 
-        Log.i("buttonTapped", ourId);
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, resourceId);
+        mediaPlayer.start();
     }
 
     @Override
