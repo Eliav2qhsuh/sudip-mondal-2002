@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <android.support.constraint.ConstraintLayout
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            android:id="@+id/record"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="record"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="play"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/record" />
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:background="#f0f0f0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
 
     <android.support.v7.widget.GridLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:columnCount="2"
@@ -21,7 +51,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
             app:layout_column="0"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
@@ -35,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
             app:layout_column="1"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
@@ -50,7 +78,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
             app:layout_column="0"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
@@ -64,7 +91,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
             app:layout_column="1"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
@@ -78,7 +104,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
             app:layout_column="0"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
@@ -91,7 +116,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:foregroundGravity="fill"
-            android:onClick="buttonTapped"
             app:layout_column="1"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
@@ -100,4 +124,4 @@
             app:srcCompat="@drawable/tom2" />
 
     </android.support.v7.widget.GridLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
