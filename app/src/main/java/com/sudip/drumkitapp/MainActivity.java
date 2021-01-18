@@ -1,12 +1,15 @@
 package com.sudip.drumkitapp;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.media.SoundPool;
+import android.media.projection.MediaProjectionManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -43,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
         checkPermission();
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            ((AudioManager) getSystemService(AUDIO_SERVICE)).setAllowedCapturePolicy(AudioAttributes.ALLOW_CAPTURE_BY_ALL);
+        }
         mExecutorService = Executors.newSingleThreadExecutor();
         ViewGroup group = ((ViewGroup) findViewById(R.id.layout));
         soundPool = new SoundPool(200, AudioManager.STREAM_MUSIC, 0);
@@ -100,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        testCode();
     }
 
 
@@ -223,5 +231,23 @@ public class MainActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK && requestCode == 200) {
             checkPermission();
         }
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.Q) {
+                return;
+            }
+            Intent service = new Intent(this, ForegroundService.class);
+            service.putExtra("code", resultCode);
+            service.putExtra("data", data);
+            startForegroundService(service);
+        }
     }
+
+    public void testCode() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            MediaProjectionManager manager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+            Intent intent = manager.createScreenCaptureIntent();
+            startActivityForResult(intent, 1);
+        }
+    }
+
 }
