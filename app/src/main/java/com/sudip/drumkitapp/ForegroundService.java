@@ -62,6 +62,8 @@ public class ForegroundService extends Service {
             //for information
             //https://blog.csdn.net/jiangliloveyou/article/details/11218555
             //https://github.com/AFinalStone/AudioRecord.git
+            //http://www.audiobar.cn/  find tone
+            //https://www.bilibili.com/read/cv3250059/
         }
         return super.onStartCommand(intent, flags, startId);
     }
