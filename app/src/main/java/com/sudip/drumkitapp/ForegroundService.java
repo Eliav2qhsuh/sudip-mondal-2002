@@ -1,5 +1,6 @@
 package com.sudip.drumkitapp;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -7,6 +8,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.media.AudioAttributes;
 import android.media.AudioFormat;
@@ -17,6 +19,7 @@ import android.media.projection.MediaProjectionManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 
 /**
  * @author: Xu
@@ -42,19 +45,21 @@ public class ForegroundService extends Service {
                     config = new AudioPlaybackCaptureConfiguration.Builder(mediaProjection)
                             .addMatchingUsage(AudioAttributes.USAGE_MEDIA)
                             .build();
+                    AudioRecord record;
+                    if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                        record = new AudioRecord.Builder()
+                                .setAudioFormat(new AudioFormat.Builder().setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+                                        .setSampleRate(8000)
+                                        .setChannelMask(AudioFormat.CHANNEL_OUT_STEREO).build())
+                                .setAudioPlaybackCaptureConfig(config)
+                                .build();
+                        record.startRecording();
 
-                    AudioRecord record = new AudioRecord.Builder()
-                            .setAudioFormat(new AudioFormat.Builder().setEncoding(AudioFormat.ENCODING_PCM_16BIT)
-                                    .setSampleRate(8000)
-                                    .setChannelMask(AudioFormat.CHANNEL_OUT_STEREO).build())
-                            .setAudioPlaybackCaptureConfig(config)
-                            .build();
-                    record.startRecording();
-
-                    int bufferSize = AudioRecord.getMinBufferSize(8000, AudioFormat.CHANNEL_OUT_STEREO, AudioFormat.ENCODING_PCM_16BIT);
-                    short[] buffer = new short[bufferSize];
-                    while (true){
-                        record.read(buffer, 0, buffer.length);
+                        int bufferSize = AudioRecord.getMinBufferSize(8000, AudioFormat.CHANNEL_OUT_STEREO, AudioFormat.ENCODING_PCM_16BIT);
+                        short[] buffer = new short[bufferSize];
+                        while (true){
+                            record.read(buffer, 0, buffer.length);
+                        }
                     }
                 }
             }.start();
